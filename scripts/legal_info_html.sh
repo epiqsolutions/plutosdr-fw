@@ -264,12 +264,11 @@ if [ "$TARGET" == "PlutoSDR" ] ; then
 echo "You may obtain the complete Corresponding Source code from us for a period of three years after our last shipment of this product, which will be no earlier than 01Jan2021, by sending a money order or check for \$15 (USD) to:
 <pre>
 GPL Compliance
-Systems Development Group
-Attention: Robin Getz
-Analog Devices Inc.
-Three Technology Way
-Norwood, MA.
-02062
+Attention: Michael Shogren
+Epiq Solutions
+165 Commerce Dr. Suite 204
+Schaumburg, IL
+60173
 USA
 </pre>
 

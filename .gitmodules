@@ -9,8 +9,8 @@
 [submodule "linux"]
 	path = linux
 	url = https://github.com/analogdevicesinc/linux
-	branch = 2018_R1
+	branch = master
 [submodule "hdl"]
 	path = hdl
 	url = https://github.com/analogdevicesinc/hdl
-	branch = hdl_2017_r1
+	branch = master
