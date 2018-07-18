@@ -13,7 +13,7 @@ Latest binary Release : [![GitHub release](https://img.shields.io/github/release
       cd plutosdr-fw
       export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
       export PATH=$PATH:/opt/Xilinx/SDK/2016.2/gnu/arm/lin/bin:/opt/Xilinx/SDK/2016.2/bin
-      export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2016.4/settings64.sh
+      export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.4/settings64.sh
       make TARGET=sidekiqz2
  
  ```
