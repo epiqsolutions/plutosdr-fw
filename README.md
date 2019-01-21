@@ -10,13 +10,12 @@ Latest binary Release : [![GitHub release](https://img.shields.io/github/release
  sudo apt-get install git build-essential fakeroot libncurses5-dev libssl-dev ccache
  sudo apt-get install dfu-util u-boot-tools device-tree-compiler libssl1.0-dev mtools
  sudo apt-get install bc python cpio zip unzip rsync file wget
- git clone --recursive https://github.com/analogdevicesinc/plutosdr-fw.git
+ git clone --recursive https://github.com/epiqsolutions/plutosdr-fw.git
  cd plutosdr-fw
  export CROSS_COMPILE=arm-linux-gnueabihf-
  export PATH=$PATH:/opt/Xilinx/SDK/2018.2/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin
  export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2018.2/settings64.sh
- make
-
+ make TARGET=sidekiqz2
 ```
 
 The project may build also using Vivado 2017.4, 2017.2, 2016.4 or 2016.2.
@@ -28,14 +27,9 @@ Following variables should be exported:
 
 
  ```bash
-      sudo apt-get install git build-essential fakeroot libncurses5-dev libssl-dev ccache 
-      sudo apt-get install dfu-util u-boot-tools device-tree-compiler libssl1.0-dev mtools
-      git clone --recursive https://github.com/epiqsolutions/plutosdr-fw.git
-      cd plutosdr-fw
-      export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
-      export PATH=$PATH:/opt/Xilinx/SDK/2017.2/gnu/arm/lin/bin:/opt/Xilinx/SDK/2017.2/bin
-      export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.4/settings64.sh
-      make TARGET=sidekiqz2
+  export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
+  export PATH=$PATH:/opt/Xilinx/SDK/2017.2/gnu/arm/lin/bin:/opt/Xilinx/SDK/2017.2/bin
+  export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.4/settings64.sh
  ```
 
 And you need to revert this patch:
