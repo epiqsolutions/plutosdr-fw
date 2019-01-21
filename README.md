@@ -6,18 +6,64 @@ Latest binary Release : [![GitHub release](https://img.shields.io/github/release
 [Instructions from the Wiki: Building the image](https://wiki.analog.com/university/tools/pluto/building_the_image)
 
 * Build Instructions
+```bash
+ sudo apt-get install git build-essential fakeroot libncurses5-dev libssl-dev ccache
+ sudo apt-get install dfu-util u-boot-tools device-tree-compiler libssl1.0-dev mtools
+ sudo apt-get install bc python cpio zip unzip rsync file wget
+ git clone --recursive https://github.com/analogdevicesinc/plutosdr-fw.git
+ cd plutosdr-fw
+ export CROSS_COMPILE=arm-linux-gnueabihf-
+ export PATH=$PATH:/opt/Xilinx/SDK/2018.2/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin
+ export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2018.2/settings64.sh
+ make
+
+```
+
+The project may build also using Vivado 2017.4, 2017.2, 2016.4 or 2016.2.
+However 2018.2 is the current tested FPGA systhesis toolchain.
+In the v0.30 release we swithched to the arm-linux-gnueabihf-gcc hard-float toolchain.
+
+If you want to use the former arm-xilinx-linux-gnueabi-gcc soft-float toolchain included in SDK 2017.2.
+Following variables should be exported:
+
+
  ```bash
       sudo apt-get install git build-essential fakeroot libncurses5-dev libssl-dev ccache 
       sudo apt-get install dfu-util u-boot-tools device-tree-compiler libssl1.0-dev mtools
       git clone --recursive https://github.com/epiqsolutions/plutosdr-fw.git
       cd plutosdr-fw
       export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
-      export PATH=$PATH:/opt/Xilinx/SDK/2016.2/gnu/arm/lin/bin:/opt/Xilinx/SDK/2016.2/bin
+      export PATH=$PATH:/opt/Xilinx/SDK/2017.2/gnu/arm/lin/bin:/opt/Xilinx/SDK/2017.2/bin
       export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.4/settings64.sh
       make TARGET=sidekiqz2
- 
  ```
-   
+
+And you need to revert this patch:
+https://github.com/analogdevicesinc/buildroot/commit/fea212afc7dc0ee530762a1921d9ae8180778ffa
+
+
+ If you receive an error similar to the following:
+ ```
+ Starting SDK. This could take few seconds... timeout while establishing a connection with SDK
+    while executing
+"error "timeout while establishing a connection with SDK""
+    (procedure "getsdkchan" line 108)
+    invoked from within
+"getsdkchan"
+    (procedure "createhw" line 26)
+    invoked from within
+"createhw {*}$args"
+    (procedure "::sdk::create_hw_project" line 3)
+    invoked from within
+"sdk create_hw_project -name hw_0 -hwspec build/system_top.hdf"
+    (file "scripts/create_fsbl_project.tcl" line 5)
+```
+you may be able to work around it by preventing eclipse from using GTK3 for the Standard Widget Toolkit (SWT). Prior to running make, also set the following environment variable: 
+```bash
+export SWT_GTK3=0
+```
+This problem seems to affect Ubuntu 16.04LTS only.
+
  * Updating your local repository 
  ```bash 
       git pull
