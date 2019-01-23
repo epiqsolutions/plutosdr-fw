@@ -28,7 +28,7 @@ Following variables should be exported:
 
  ```bash
   export CROSS_COMPILE=arm-xilinx-linux-gnueabi-
-  export PATH=$PATH:/opt/Xilinx/SDK/2017.2/gnu/arm/lin/bin:/opt/Xilinx/SDK/2017.2/bin
+  export PATH=$PATH:/opt/Xilinx/SDK/2017.2/gnu/arm/lin/bin
   export VIVADO_SETTINGS=/opt/Xilinx/Vivado/2017.4/settings64.sh
  ```
 
